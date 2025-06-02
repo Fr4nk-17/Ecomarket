@@ -1,4 +1,4 @@
-package com.microservice.student.controller;
+package com.microservice.product.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservice.student.service.IStudentService;
-import com.microservice.student.model.Student;
+import com.microservice.product.service.IProductService;
+import com.microservice.product.model.product;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,36 +20,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping("/api/v1/student")
-public class StudentController {
+@RequestMapping("/api/v1/product")
+public class ProductController {
 
 
     @Autowired
-    private IStudentService iStudentService;
+    private IProductService iProductService;
 
     
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveStudent(@RequestBody Student student){
-        iStudentService.save(student);
+    public void saveProduct(@RequestBody Product product){
+        iProductService.save(product);
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> findAllStudents(){
-        return ResponseEntity.ok(iStudentService.findAll());
+    public ResponseEntity<?> findAllProduct(){
+        return ResponseEntity.ok(iProductService.findAll());
     }
     
 
     @GetMapping("/search/{id}")    
     public ResponseEntity<?> findById(@PathVariable Long id){
-        return ResponseEntity.ok(iStudentService.findById(id));
+        return ResponseEntity.ok(iProductService.findById(id));
     }
 
-    //localhost:8090/api/v1/student/search-by-course/1
+    //localhost:8090/api/v1/product/search-by-course/1
     @GetMapping("/search-by-course/{courseId}")
     public ResponseEntity<?> findByIdCourse(@PathVariable Long courseId){
          System.out.println("-------------------------------------------------------------------"+ courseId);
-         return ResponseEntity.ok(iStudentService.findByIdCourse(courseId));
+         return ResponseEntity.ok(iProductService.findByIdCourse(courseId));
     }
 
 }
