@@ -3,9 +3,9 @@ package com.microservice.course.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.microservice.course.client.StudentClient;
-import com.microservice.course.dto.StudentDTO;
-import com.microservice.course.http.response.StudentByCourseResponse;
+import com.microservice.course.client.ProductClient;
+import com.microservice.course.dto.ProductDTO;
+import com.microservice.course.http.response.ProductByCourseResponse;
 import com.microservice.course.model.Course;
 import com.microservice.course.repository.ICourseRepository;
 
@@ -18,7 +18,7 @@ public class CourseServiceImpl implements ICourseService{
     private ICourseRepository iCourseRepository;
 
     @Autowired
-    private StudentClient studentClient;
+    private ProductClient productClient;
 
     @Override
     public List<Course> findAll() {
@@ -36,7 +36,7 @@ public class CourseServiceImpl implements ICourseService{
     }
 
     @Override
-    public StudentByCourseResponse findStudentsByIdCourse(Long idCourse){
+    public ProductByCourseResponse findProductByIdCourse(Long idCourse){
 
 
         //Consultar el curso
@@ -44,13 +44,13 @@ public class CourseServiceImpl implements ICourseService{
         Course course = iCourseRepository.findById(idCourse).orElse(new Course());
 
         //Obtener los estudiantes que estan en el curso obtenido
-        List<StudentDTO> studentDTOList = studentClient.findAllStudentByCourse(idCourse);
+        List<ProductDTO> productDTOList = productClient.findAllProductByCourse(idCourse);
 
 
-        return StudentByCourseResponse.builder()
+        return ProductByCourseResponse.builder()
                 .courseName(course.getName())
                 .teacher(course.getTeacher())
-                .studentDTOList(studentDTOList)
+                .productDTOList(productDTOList)
                 .build();
     }
 }

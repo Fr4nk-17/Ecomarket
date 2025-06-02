@@ -12,11 +12,12 @@ import lombok.Data;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StudentDTO {
+public class ProductDTO {
 
 
     private String name;
-    private String lastName;
-    private String email;
+    private String description;
+    private Double price;
+    private Integer stock;
     private Long courseId;
 }

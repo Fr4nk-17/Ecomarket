@@ -1,7 +1,7 @@
 package com.microservice.course.service;
 
 import com.microservice.course.model.Course;
-import com.microservice.course.http.response.StudentByCourseResponse;
+import com.microservice.course.http.response.ProductByCourseResponse;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ public interface ICourseService {
 
     void save(Course course);
 
-    StudentByCourseResponse findStudentsByIdCourse(Long idCourse);
+    ProductByCourseResponse findProductByIdCourse(Long idCourse);
 }

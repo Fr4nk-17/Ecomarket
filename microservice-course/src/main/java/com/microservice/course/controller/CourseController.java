@@ -26,7 +26,7 @@ public class CourseController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveStudent(@RequestBody Course course) {                
+    public void saveProduct(@RequestBody Course course) {                
         courseService.save(course);
     }
     
@@ -40,9 +40,9 @@ public class CourseController {
         return ResponseEntity.ok(courseService.findById(id));
     }
     
-    @GetMapping("/search-student/{idCourse}")
-    public ResponseEntity<?> findStudentsByIdCourse(@PathVariable Long idCourse){
-        return ResponseEntity.ok(courseService.findStudentsByIdCourse(idCourse));
+    @GetMapping("/search-product/{idCourse}")
+    public ResponseEntity<?> findProductByIdCourse(@PathVariable Long idCourse){
+        return ResponseEntity.ok(courseService.findProductByIdCourse(idCourse));
     }
 
 }

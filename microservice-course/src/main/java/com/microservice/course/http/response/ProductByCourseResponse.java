@@ -1,6 +1,6 @@
 package com.microservice.course.http.response;
 
-import com.microservice.course.dto.StudentDTO;
+import com.microservice.course.dto.ProductDTO;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import lombok.Data;
 @Data
 @NoArgsConstructor
 
-public class StudentByCourseResponse {
+public class ProductByCourseResponse {
     private String courseName;
     private String teacher;
-    private List<StudentDTO> studentDTOList;
+    private List<ProductDTO> productDTOList;
 }
